@@ -103,6 +103,7 @@ func (tagger *CoreNLPTagger) Tag(input string) ([]*Result, error) {
 		"-encoding", tagger.encoding,
 		//"-tokenize.whitespace", "-ssplit.eolonly",
 		"-outputDirectory", "out/",
+		"-outputFormat", "conll",
 	}...)
 
 	cmd := exec.Command(tagger.java, args...)
