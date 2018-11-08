@@ -101,18 +101,17 @@ func (tagger *CoreNLPTagger) Tag(input string) ([]*Result, error) {
 		"-props", tagger.properties,
 		"-file", tmp.Name(),
 		"-encoding", tagger.encoding,
+		//"-tokenize.whitespace", "-ssplit.eolonly",
+		"-outputDirectory", "out/",
 	}...)
 
 	cmd := exec.Command(tagger.java, args...)
 
-	var out bytes.Buffer
 	var stderr bytes.Buffer
-	cmd.Stdout = &out
 	cmd.Stderr = &stderr
 
 	if err = cmd.Run(); err != nil {
 		return nil, fmt.Errorf("%s: %s", err, stderr.String())
 	}
-	fmt.Println(out)
-	return tagger.parse(out.String()), nil
+	return tagger.parse("meep"), nil
 }
