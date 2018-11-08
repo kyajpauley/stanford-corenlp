@@ -12,7 +12,7 @@ func main() {
 		err    error
 	)
 
-	modelPath := "examples/jar_files/*"
+	modelPath := "examples/jar/*"
 	propertiesPath := "examples/StanfordCoreNLP-chinese.properties"
 
 	tagger, err = stanford_corenlp.NewCoreNLPTagger(modelPath, propertiesPath)
